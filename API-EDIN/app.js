@@ -17,13 +17,13 @@ app.use(cors());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
 //RUTAS
-require('./src/routes/OperationsRoutes')(app);
+require('./src/routes/DemoRoutes')(app);
 
 app.listen(app.get('port'), () => {
     console.log(`Servidor Corriendo en el Puerto ${app.get('port')}`);
